@@ -19,7 +19,7 @@ Esta página pinta un formulario que se rellena para insertar esos datos en una 
         $nombre=$_POST['nombre'];//Guardo en $nombre lo que el usuario pone en el cuadro de texto nombre
         $ciudad=$_POST['ciudad'];//Guardo en $nombre lo que el usuario pone en el cuadro de texto ciudad
         $asignatura=$_POST['asignatura'];//Guardo en $nombre lo que el usuario pone en el cuadro de texto asignatura
-        $nota=$_POST['nota'];//Guardo en $nombre lo que el usuario pone en el cuadro de texto nota
+        $nota=$_POST['nota'];//Guardo en $nota lo que el usuario pone en el cuadro de texto nota
         require ('datos_conexion.php');//Uso los datos de conexcion que están en el fichero conexion.php
         $conexion= mysqli_connect($db_host, $db_usuario, $db_clave);
         if (mysqli_connect_errno()){
