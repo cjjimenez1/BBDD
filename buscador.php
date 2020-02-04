@@ -21,20 +21,25 @@
         mysqli_set_charset($conexion, "utf8");
         $consulta="Select * from alumnos where Nombre like '%$busqueda%'";//los caracteres % al principio y al final sirven de comodines. Busco nombre car y lo encuentra
         $resultado= mysqli_query($conexion, $consulta);
-        echo "<table border=1>";
-        echo "<tr><th>Id</th>";
-        echo "<th>Nombre</th>";
-        echo "<th>Asignatura</th>";
-        echo "<th>Nota</th>";
-        while($fila= mysqli_fetch_array($resultado,MYSQLI_ASSOC)){
-            echo "<tr><td>";
-            echo $fila['Id'] . "</td><td>";
-            echo $fila['Nombre'] . "</td><td> ";
-            echo $fila['Asignatura'] . "</td><td> ";
-            echo $fila['Nota'] . "</td></tr>";
-        }
-        echo"</table>";
-        // put your code here
+        if (mysqli_affected_rows($conexion)==0){//Si el número de filas que devuelve el select es 0
+            echo "No hay alumnos con el nombre de $busqueda";
+        } else {
+            echo "<table border=1>";
+            echo "<tr><th>Id</th>";
+            echo "<th>Nombre</th>";
+            echo "<th>Ciudad</th>";
+            echo "<th>Asignatura</th>";
+            echo "<th>Nota</th>";
+            while($fila= mysqli_fetch_array($resultado,MYSQLI_ASSOC)){
+                echo "<tr><td>";
+                echo $fila['Id'] . "</td><td>";
+                echo $fila['Nombre'] . "</td><td> ";
+                echo $fila['Ciudad'] . "</td><td> ";
+                echo $fila['Asignatura'] . "</td><td> ";
+                echo $fila['Nota'] . "</td></tr>";
+            }
+            echo"</table>";
+        }        // put your code here
         ?>
     </body>
 </html>
